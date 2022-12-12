@@ -1,9 +1,8 @@
 import axios from "axios";
 const AuthInstance = axios.create({
-  baseURL: "https://pre-onboarding-selection-task.shop"
+  baseURL: "https://pre-onboarding-selection-task.shop",
 });
 AuthInstance.interceptors.request.use(function (config) {
-  // Do something before request is sent
   let token = localStorage.getItem("access_token");
   config.headers["Authorization"] = "Bearer " + token;
   return config;
@@ -22,7 +21,7 @@ export const getTodo = async () =>
 export const putTodo = async (datas) =>
   await AuthInstance.put(`/todos/${datas.id}`, {
     todo: datas.todo,
-    isCompleted: datas.isCompleted
+    isCompleted: datas.isCompleted,
   })
     .then((data) => data)
     .catch((err) => err.response);

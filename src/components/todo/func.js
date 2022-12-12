@@ -1,6 +1,6 @@
 import { postTodo, putTodo, getTodo, deleteTodo } from "../../apis/authApi";
 
-export const writeTodo = async (todo, previous, setData) => {
+export const writeTodo = async (todo, previous, target, setData) => {
   if (todo.length === 0) {
     return;
   }
@@ -9,6 +9,22 @@ export const writeTodo = async (todo, previous, setData) => {
     setData([data, ...previous]);
   } else {
     alert("리스트 추가에 실패했습니다");
+  }
+};
+export const checkTodo = async (el, previous, setData, setIsChecked) => {
+  let { data, status } = await putTodo(el);
+  if (status < 300) {
+    let newData = previous.map((el) => {
+      if (el.id === data.id) {
+        return data;
+      } else {
+        return el;
+      }
+    });
+    setData(newData);
+    setIsChecked(data.isCompleted);
+  } else {
+    alert("투두 수정에 실패했습니다");
   }
 };
 export const changeTodo = async (el, previous, setData, setIsOpen) => {
@@ -22,9 +38,7 @@ export const changeTodo = async (el, previous, setData, setIsOpen) => {
       }
     });
     setData(newData);
-    if (setIsOpen !== undefined) {
-      setIsOpen(false);
-    }
+    setIsOpen(false);
   } else {
     alert("투두 수정에 실패했습니다");
   }

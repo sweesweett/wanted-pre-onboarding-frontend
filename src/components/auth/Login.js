@@ -1,34 +1,26 @@
 import React from "react";
-import { login } from "./func";
+import { login, validation } from "./func";
 import { useNavigate } from "react-router-dom";
 const Login = () => {
   const navigate = useNavigate();
   const [input, setInput] = React.useState({
     email: "",
-    password: ""
+    password: "",
   });
   const [alert, setAlert] = React.useState("");
-  const [EmailConfirmed, setEmailConfirmed] = React.useState(true);
+  const [emailConfirmed, setEmailConfirmed] = React.useState(true);
   const [isConfirmed, setIsConfirmed] = React.useState(true);
   const onInput = (e, target) => {
-    setInput({ ...input, [target]: e.target.value });
-    if (target === "email" && e.target.value.includes("@")) {
-      setAlert("");
-      setEmailConfirmed(true);
-    } else if (target === "email" && !e.target.value.includes("@")) {
-      setAlert("이메일 형식에 맞게 입력해 주세요.");
-      setEmailConfirmed(false);
-    }
-    if (target === "password") {
-      if (e.target.value.length < 8) {
-        setAlert("비밀번호는 8자 이상이여야 합니다.");
-      } else {
-        if (EmailConfirmed) {
-          setAlert("");
-          setIsConfirmed(false);
-        }
-      }
-    }
+    validation(
+      target,
+      e.target.value,
+      setInput,
+      setAlert,
+      setEmailConfirmed,
+      emailConfirmed,
+      setIsConfirmed,
+      input
+    );
   };
   const onLogin = (e) => {
     e.preventDefault();
@@ -36,7 +28,7 @@ const Login = () => {
   };
   return (
     <div className="auth">
-      <h2>LOGIN</h2>
+      <h2>로그인</h2>
       <form onSubmit={onLogin}>
         <label htmlFor="email">ID</label>
         <input

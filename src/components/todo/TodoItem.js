@@ -1,10 +1,12 @@
-import { changeTodo, deleteTodoItem } from "./func";
+import { changeTodo, deleteTodoItem, checkTodo } from "./func";
 import React from "react";
 const TodoItem = ({ el, setData, data }) => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const [isChecked, setIsChecked] = React.useState(el.isCompleted);
   const checkCompleted = (e) => {
     let newData = { ...el, isCompleted: e.target.checked };
-    changeTodo(newData, data, setData);
+
+    checkTodo(newData, data, setData, setIsChecked);
   };
   const editTodo = (e) => {
     e.preventDefault();
@@ -20,11 +22,7 @@ const TodoItem = ({ el, setData, data }) => {
   };
   return (
     <li>
-      <input
-        type="checkbox"
-        defaultChecked={el.isCompleted}
-        onClick={checkCompleted}
-      />
+      <input type="checkbox" checked={isChecked} onChange={checkCompleted} />
 
       {isOpen ? (
         <form onSubmit={editTodo}>

@@ -6,7 +6,7 @@ const TodoWrite = ({ data, setData }) => {
   };
 
   return (
-    <div>
+    <div className='writeTodo'>
       <form onSubmit={onSubmitTodo}>
         <input type="text" name="todo" />
         <button>추가</button>

@@ -9,9 +9,7 @@ export const routes = [
     element: <Outlet />,
     children: [
       { path: "/", element: <Main />, index: true },
-      { path: "/todo", element: <Todo />, index: true }
-      // { path: "/products", element: <DynamicProductsIndex />, index: true },
-      // { path: "/products/:id", element: <DynamicProductsId /> },
-    ]
-  }
+      { path: "/todo", element: <Todo />, index: true },
+    ],
+  },
 ];

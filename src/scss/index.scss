@@ -1,9 +1,48 @@
 @import 'main';
+@import 'todo';
+*{
+  box-sizing:border-box;
+}
+a{
+  text-decoration:none;
+}
+li{
+  list-style:none;
+}
 body{
   margin:0;
 }
 
-.App{
+.container{
   max-width:900px;
-  margin:50px auto;
+  margin:100px auto 0;
+
+}
+header{
+ position:fixed;
+ left:0;
+ top:0;
+ width:100%;
+  padding:8px;
+   background-color:#81d4fa;
+   color:white;
+  .headerContainer{
+    max-width:900px;
+    margin:0 auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    
+    h2{
+     
+      text-align:center;
+    }
+    span{
+      position:absolute;
+      right:0;
+      cursor:pointer;
+      font-weight:700;
+    }
+  }
 }

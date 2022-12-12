@@ -1,0 +1,55 @@
+// <div className="main">
+// <div className="main__btns">
+
+
+.main{
+  margin: 0 auto;
+  
+  &__btns{
+    display: flex;
+    width:100%;
+    button{
+      flex:1 1 50%;
+      padding:12px;
+      border:none;
+      cursor:pointer;
+      background-color:#b2ebf2;
+      &.active{
+        color:white;
+        background-color:#00acc1;
+
+
+      }
+    }
+  }  
+}
+.auth{
+width:90%;
+margin:0 auto;
+h2{
+  text-align: center;
+  letter-spacing: 5px;
+}
+form{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  label{
+    align-self:start;
+    margin-left:5%;
+  }
+  input{
+    padding:6px;
+    width:90%;
+    // margin-bottom:15px;
+    
+  }
+  button{
+    padding:12px;
+    margin:20px 12px;
+    width:90%;
+    align-self: center;
+  }
+}
+
+}

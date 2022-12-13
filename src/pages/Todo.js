@@ -11,7 +11,10 @@ const Todo = () => {
     }
   }, []);
   if (localStorage.getItem("access_token") === null) {
+    console.log("여러번찍히나?");
     return <Navigate to="/" />;
+  } else {
+    console.log("이렇게하면 많이찍힐까?");
   }
 
   return (

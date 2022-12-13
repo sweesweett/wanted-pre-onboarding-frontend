@@ -7,7 +7,7 @@ const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
 root.render(
-  <BrowserRouter basename={"/wanted-pre-onboarding-frontend"}>
+  <BrowserRouter>
     <App />
   </BrowserRouter>
 );

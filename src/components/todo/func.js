@@ -1,12 +1,14 @@
 import { postTodo, putTodo, getTodo, deleteTodo } from "../../apis/authApi";
 
-export const writeTodo = async (todo, previous, target, setData) => {
-  if (todo.length === 0) {
+export const writeTodo = async (todo, previous, setData) => {
+  if (todo.value.length === 0) {
     return;
   }
-  let { data, status } = await postTodo({ todo });
+  let { data, status } = await postTodo({ todo: todo.value });
   if (status < 300) {
     setData([data, ...previous]);
+    todo.value = "";
+    todo.focus();
   } else {
     alert("리스트 추가에 실패했습니다");
   }
